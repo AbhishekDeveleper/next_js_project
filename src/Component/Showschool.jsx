@@ -1,20 +1,25 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 import Image from "next/image";
 import { IoIosSearch } from "react-icons/io";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-
-const page = ({ users }) => {
+// import getData from "@/app/lib/getData";
+const Showschool = ({ alluser }) => {
   const [showMenu, setshowMenu] = useState(false);
 
   const showbar = () => {
     setshowMenu(!showMenu);
     console.log(showMenu);
   };
+  useEffect(() => {
+    if (alluser) console.log("user Obtained");
+    else console.log("noUser");
+  }, [alluser]);
 
   return (
     <div className="mainpage_container">
@@ -82,13 +87,14 @@ const page = ({ users }) => {
         </div>{" "}
         <div className="containers">
           {" "}
-          {users ? (
-            users.map((items) => {
+          {alluser ? (
+            alluser.map((items) => {
+              const { id, image, city, state, name } = items;
               return (
-                <div className="allimage_box" key={items.id}>
+                <div className="allimage_box" key={id}>
                   <div className="imgdiv">
                     <Image
-                      src={`/schoolImage/${items.image}`}
+                      src={`/schoolImage/${image}`}
                       width={100}
                       height={100}
                       className="image"
@@ -96,9 +102,9 @@ const page = ({ users }) => {
                     />
                   </div>{" "}
                   <div className="detail">
-                    <div className="statename"> {items.city} </div>{" "}
-                    <div> {items.name} </div>{" "}
-                    <div className="cityname"> {items.state} </div>{" "}
+                    <div className="statename"> {city} </div>{" "}
+                    <div> {name} </div>{" "}
+                    <div className="cityname"> {state} </div>{" "}
                   </div>{" "}
                   <div className="apply_button">
                     <button> Apply Now </button>{" "}
@@ -137,4 +143,4 @@ const page = ({ users }) => {
   );
 };
 
-export default page;
+export default Showschool;

@@ -11,7 +11,7 @@ export default function Home() {
     image: null,
     contact: "",
   });
-
+  const [message, setMessage] = useState(null);
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData((prev) => ({
@@ -33,7 +33,8 @@ export default function Home() {
     });
 
     const result = await response.json();
-    console.log(result);
+    if (result.name) setMessage("Submitted Successfully ");
+    if (!result.name) setMessage("Error");
   };
 
   return (
@@ -99,6 +100,14 @@ export default function Home() {
           Submit{" "}
         </button>{" "}
       </form>{" "}
+      {message ? (
+        <div>
+          <h4>{message}</h4>
+          <a href="/showSchools">Goto School Page</a>
+        </div>
+      ) : (
+        <h4>{message}</h4>
+      )}
     </div>
   );
 }
