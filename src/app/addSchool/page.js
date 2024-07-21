@@ -27,10 +27,13 @@ export default function Home() {
       data.append(key, formData[key]);
     }
 
-    const response = await fetch("/api/add-data", {
-      method: "POST",
-      body: data,
-    });
+    const response = await fetch(
+      "https://next-js-project-kg4s-39phwl5rn-rajveer-singhs-projects-ef4d1277.vercel.app/api/add-data",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
 
     const result = await response.json();
     if (result.name) setMessage("Submitted Successfully ");
