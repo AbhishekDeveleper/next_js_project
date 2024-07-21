@@ -29,7 +29,7 @@ const Showschool = () => {
   useEffect(() => {
     const response = async () => {
       const res = await axios.get(
-        "https://next-js-project-kg4s-39phwl5rn-rajveer-singhs-projects-ef4d1277.vercel.app/api/get-data"
+        "https://next-js-project-gilt-two.vercel.app/api/get-data"
       );
       console.log(res);
       const result = res.data;

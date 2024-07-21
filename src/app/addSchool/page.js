@@ -28,7 +28,7 @@ export default function Home() {
     }
 
     const response = await fetch(
-      "https://next-js-project-kg4s-39phwl5rn-rajveer-singhs-projects-ef4d1277.vercel.app/api/add-data",
+      "https://next-js-project-gilt-two.vercel.app/api/add-data",
       {
         method: "POST",
         body: data,
